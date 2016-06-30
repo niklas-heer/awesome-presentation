@@ -9,7 +9,7 @@ section.has-light-background, section.has-light-background h1, section.has-light
 
 @font-face {
   font-family: "Roboto";
-  src: url("../../fonts/RobotoBlack.ttf") format(truetype);
+  src: url("../../fonts/Roboto-Black.ttf") format(truetype);
   font-weight: normal;
   font-style: normal;
 }
