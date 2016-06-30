@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/nih.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.icon {
+				z-index: 100;
+				width: 80px;
+				height: 80px;
+				display: inline-block;
+				background-image: url(../assets/img/home.png);
+				background-size: cover;
+				position: fixed;
+				bottom: 10px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">
+			<div class="icon"></div>
+		</a>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Operatoren überladen</h1>
+				    <small>von Niklas Heer</small>
+					<br>
+					<small>28.04.2016</small>
+				</section>
+				<section>
+					<section>
+						<p>Mit Operatoren überladen ist gemeint, wenn man die Funktionsweise von z.B. der <code>+</code>-Funktion für seine Klasse anpasst um sie so intuitiver nutzbar zu machen.</p>
+						<br>
+
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
+tBruch Bruch;
+Bruch = Bruch + 5;
+						</code></pre>
+					</section>
+					<section>
+						<h2>Liste der Operatoren</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+new        +   %   ~   >    /=   |=    <<=   >=   --   ()
+delete     -   ^   !   +=   %=   <<    ==    &&   ,    []
+new[]      *   &   =   -=   ^=   >>    !=    ||   ->*
+delete[]   /   |   <   *=   &=   >>=   <=    ++   ->
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Beispiel</h1>
+						<h2>Bruchrechnung</h2>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim contenteditable>
+class tBruch
+{
+public:
+    tBruch() {zaehler=0; nenner=1;}
+    int GetNenner()  {return nenner;}
+    int GetZaehler()  {return zaehler;}
+    void SetNenner(int p) {if (p!=0) nenner=p;}
+    void SetZaehler(int p)  {zaehler=p;}
+    void Addiere(int);
+    void Addiere(tBruch);
+    void Show();
+private:
+    int zaehler;
+    int nenner;
+};
+
+void tBruch::Addiere(int summand)
+{
+    zaehler+=summand*nenner;
+}
+
+void tBruch::Addiere(tBruch summand)
+{
+    zaehler = zaehler*summand.GetNenner()
+            + summand.GetZaehler()*nenner;
+    nenner  = nenner * summand.GetNenner();
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>Verwendung</h1>
+						<h2>Beispiel anhand der Addition</h2>
+					</section>
+					<section>
+						<pre><code class="hljs" data-trim data-noescape contenteditable>
+class tBruch
+{
+public:
+    tBruch() {zaehler=0; nenner=1;}
+    int GetNenner()  {return nenner;}
+    int GetZaehler()  {return zaehler;}
+    void SetNenner(int p) {if (p!=0) nenner=p;}
+    void SetZaehler(int p)  {zaehler=p;}
+    tBruch operator+(int);
+    tBruch operator+(tBruch);
+    void Show();
+private:
+    int zaehler;
+    int nenner;
+};
+
+tBruch tBruch::operator+(int summand)
+{
+    zaehler+=summand*nenner;
+    return *this;                  // gibt Zeiger zurück
+}
+
+tBruch tBruch::operator+(tBruch summand)
+{
+    zaehler = zaehler*summand.GetNenner()
+              + summand.GetZaehler()*nenner;
+    nenner  = nenner * summand.GetNenner();
+    return *this;
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Aufruf</h2>
+						<pre><code class="hljs" data-trim data-noescape contenteditable>
+tBruch Summe, Summand1, Summand2;
+
+Summe = Summand1.operator+(Summand2);
+Summe = Summand1 + Summand2;             // identisch zu .operator+
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Weitere Beispiele</h1>
+					</section>
+					<section>
+						<h2>Inkrementieren und Dekrementieren</h2>
+						<pre><code class="hljs" data-trim data-noescape contenteditable>
+class tBruch
+{
+    tBruch& operator++();    // Präfix
+    tBruch operator++(int);  // Postfix
+    ...
+};
+
+tBruch& tBruch::operator++()
+// Praefix-Inkrement
+{
+    // berechne den neuen Bruch
+    // geht auch: *this = *this + 1;
+    zaehler += nenner;
+    return *this;
+}
+
+tBruch tBruch::operator++(int)
+// Postfix-Inkrement
+{
+    tBruch oldBruch =*this; // alten Stand sichern
+    zaehler += nenner;      // Variable erhöhen
+    return oldBruch;        // return alten Stand
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Die Vergleichsoperatoren</h2>
+						<h3></h3>
+						<pre><code class="hljs" data-trim data-noescape contenteditable>
+// Gleichheitsoperator (kleiner/größer analog)
+bool tBruch::operator==(tBruch vgl)
+{
+    kuerze();
+    vgl.kuerze();
+    return (zaehler==vgl.zaehler && nenner==vgl.nenner);
+}
+
+// Ungleichheit
+class tBruch
+{
+    ...
+    bool operator==(tBruch op2);
+    bool operator!=(tBruch op2)
+        {
+            return !(*this == op2);
+        }
+    ...
+};
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Sonderfall</h1>
+						<h2>Global überladen</h2>
+					</section>
+					<section>
+						<h2>Besonderheiten auf einen Blick</h2>
+						<ul>
+							<li>können außerhalb einer Klasse verwendet werden</li>
+							<li>diese Operatoren können damit nicht überladen werden:</li>
+							<ul>
+								<li><code> =</code> Zuweisungsoperator</li>
+								<li><code>()</code> Funktionsaufruf</li>
+								<li><code>[]</code> Index</li>
+								<li><code>-></code> Zeigeroperator</li>
+							</ul>
+						</ul>
+					</section>
+					<section>
+						<h2>Beispiel</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+tBruch tBruch::operator+(int summand);   // globale Funktion
+
+tBruch Buch;
+Bruch = Bruch.operator+(5);              // Aufruf
+Bruch = Bruch + 5;                       // Aufruf (Alternative)
+						</code></pre>
+					</section>
+					<section>
+						<h3>Hier kann auch die <code>friend</code>-Methode helfen</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+class tBruch
+{
+    ...
+    // die globale Funktion operator+ darf auf
+    // Elementvariablen zugreifen
+    friend tBruch operator+(int o1, const tBruch& o2);
+    ...
+};
+
+tBruch operator+(int o1, const tBruch& o2)
+{
+    tBruch summe;
+    summe.zaehler = o2.zaehler+o1*o2.nenner;
+    summe.nenner = o2.nenner;
+    return summe;
+}
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h1>Noch Fragen?</h1>
+					</section>
+					<section>
+						<h1>Vielen Dank!</h1>
+						<br>
+						<p>Weitere Informationen: <a href="http://www.willemer.de/informatik/cpp/cppovrld.htm">http://www.willemer.de/informatik/cpp/cppovrld.htm</a></p>
+					</section>
+					<section>
+						 <img src="./img/2016_04_28-overload_operators/all_the.jpg" style="background: rgba(0,0,0,0); border: none ;width: 70%; height:70%;"></img>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

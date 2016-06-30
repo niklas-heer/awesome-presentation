@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CodeCamp - Git</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/codecamp.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+        <style>
+            .icon {
+                z-index: 100;
+                width: 80px;
+                height: 80px;
+                display: inline-block;
+                background-image: url(../assets/img/home.png);
+                background-size: cover;
+                position: fixed;
+                bottom: 10px;
+                left: 10px;
+            }
+        </style>
+	</head>
+
+	<body>
+        <a href="../index.html">
+        <div class="icon"></div>
+        </a>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+                    <h1>Einführung in Git</h1>
+                    <p>
+                        Linux statt Windows - 03.03.2016<br/>
+                        von Niklas Heer
+                    </p>
+                    <!--<img src="./img/2016_03_03-git-logo.png" style="background: rgba(0,0,0,0); border: none"></img>-->
+				</section>
+
+				<section>
+					<h2>Gliederung</h2>
+					<p>
+					    <ol>
+                            <li class="fragment">Was ist Git?</li>
+                            <li class="fragment">Git benutzen</li>
+                            <li class="fragment">Nützliches</li>
+                            <li class="fragment">Github</li>
+                            <li class="fragment">Zusammenfassung</li>
+                            <li class="fragment">Fragen</li>
+                        </ol>
+                    </p>
+				</section>
+                <section>
+                    <section>
+                        <h1>Was ist Git?</h1>
+                    </section>
+
+                    <section>
+                        <h2>Versionsverwaltung</h2>
+                        <p>
+                            version control systems (VCS)
+                        </p>
+                    </section>
+
+                    <section>
+                        <img src="./img/2016_03_03-git/git1.jpg" style="background: rgba(0,0,0,0); border: none ;width: 80%; height:80%;"></img>
+                        <br/>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+							<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+						</a>
+					</section>
+
+                    <section>
+                        <img src="./img/2016_03_03-git/git2.jpg" style="background: rgba(0,0,0,0); border: none ;width: 80%; height:80%;"></img>
+                        <br/>
+						<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">
+							<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" />
+						</a>
+					</section>
+				</section>
+                <section>
+                    <section>
+                        <h1>Definitionen</h1>
+                        <p>
+                            Begriffe, die man kennen sollte
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Workspace</h2>
+                        <p>
+                            Das Verzeichnis, das ihr für euer Git-
+                            Repository ausgewählt habt.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Repository</h2>
+                        <p>
+                            Eine Sammlung an Commits & Branches, welche im .git Verzeichnis eures
+                            Workspaces liegen.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Local Repository</h2>
+                        <p>
+                            Dies sind eure lokalen Commits & Branches.
+                            <br/>
+                            (im Prinzip euer Workspace)
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Remote Repository</h2>
+                        <p>
+                            Dies ist ein Repository, welches nicht auf eurem Rechner liegt, sondern auf einem entfernten Rechner/Server.
+                            <br/>
+                            (z.B. Github)
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Branch</h2>
+                        <p>
+                        Eine parallele Version eures <b><i>Repositorys</i></b>. Änderungen in einem Branch betreffen andere Branches nicht. Euer „Standard-Branch“ ist der <b>master</b> Branch.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Commit</h2>
+                        <p>
+                        Eine Momentaufnahme eures <b><i>Workspaces</i></b> zu einem bestimmten Zeitpunkt. Dieser wird anhand einer
+                        <b><i>SHA-1 Prüfsumme</i></b> identifiziert.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>SHA-1 Prüfsummen</h2>
+                    </section>
+
+                    <section>
+                        <img src="./img/2016_03_03-git/git_log_1.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
+                    </section>
+
+                    <section>
+                        <img src="./img/2016_03_03-git/git_log_2.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
+                    </section>
+
+                    <section>
+                        <h2>HEAD</h2>
+                        <p>
+                            Name des Commits der momentan ausgechecked ist.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Fork</h2>
+                        <p>
+                            Eine Kopie eines kompletten <b><i>Repositorys</i></b> mit allen Commits und Branches.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Upstream</h2>
+                        <p>
+                            Bei <b><i>Forks/Branches</i></b> bezeichnet dies das original <b><i>Repository</i></b>.
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Git benutzen</h1>
+                    </section>
+
+                    <section>
+                        <img src="http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
+                        <br/><i style="font-size: 15px;">Quelle: <a href="http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png">http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png</a></i>
+                    </section>
+
+                    <section data-background="rgba(255,255,255,0.87)" data-background-transition="zoom">
+                        <h1><i>Demo</i></h1>
+                    </section>
+
+                    <section>
+                        <h2>Selbst nachlesen</h2>
+                        <p>
+                        <a href="https://rogerdudler.github.io/git-guide/index.de.html">https://rogerdudler.github.io/git-guide/index.de.html</a>
+                        </p>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Nützliches</h1>
+                    </section>
+
+                    <section>
+                        <h2>git gui</h2>
+                        <p>
+                            Mit diesem Tool kann man in einer GUI nochmals seinen Commit checken, bevor man ihn dann commited.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Bash Aliases</h2>
+                        <p>
+                            Wir haben Shortcuts für die wichtigsten git-Befehle angelegt.
+                            <br/>
+                            (gPush, gPull & gReset)
+                        </p>
+                    </section>
+
+					<section>
+                        <h2>gPush, gPull & gReset</h2>
+						<br>
+						<pre class="fragment"><code class="hlbash" data-trim contenteditable>
+						alias gPush="git push origin master"
+						</code></pre>
+						<pre class="fragment"><code class="hlbash" data-trim contenteditable>
+						alias gPull="git pull origin master"
+						</code></pre>
+						<pre class="fragment"><code class="hlbash" data-trim contenteditable>
+						alias gReset="git reset --hard origin/master"
+						</code></pre>
+
+						<br>
+						<span class="fragment"><center>ganz praktisch</center>
+							<pre><code class="hlbash" data-trim contenteditable>
+								alias gg="git gui"
+							</code></pre>
+						</span>
+                    </section>
+
+					<section>
+						<h2>Commit Messages</h2>
+						<p>
+						    <ol>
+	                            <li class="fragment">Nicht mehr als 50 Zeichen</li>
+	                            <li class="fragment">Sich Zeit nehmen (kein <code>git commit -m</code>)</li>
+	                            <li class="fragment">Sich folgende Fragen stellen:</li>
+									<ul>
+										<li class="fragment">Warum ist die Änderung notwendig?</li>
+										<li class="fragment">Wie löst die Änderung das Problem?</li>
+										<li class="fragment">Welche Seiteneffekte hat die Änderung?</li>
+									</ul>
+	                            <li class="fragment">Falls vorhanden Link zum Problem einfügen</li>
+	                        </ol>
+	                    </p>
+						<i class="fragment" style="font-size: 15px;">
+							Quelle:
+							<a href="https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message">
+								https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message
+							</a>
+						</i>
+					</section>
+
+					<section>
+						<h2>Beispiel: Commit Message</h2>
+						<pre><code data-trim contenteditable>
+							Redirect user to the requested page after login
+
+https://trello.com/path/to/relevant/card
+
+Users were being redirected to the home page after login, which is less
+useful than redirecting to the page they had originally requested before
+being redirected to the login form.
+
+* Store requested path in a session variable
+* Redirect to the stored location after successfully logging in the user
+						</code></pre>
+						<i class="fragment" style="font-size: 15px;">
+							Quelle:
+							<a href="https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message">
+								https://robots.thoughtbot.com/5-useful-tips-for-a-better-commit-message
+							</a>
+						</i>
+					</section>
+
+                    <section>
+                        <h2>tig, gitk & gitg</h2>
+                        <p>
+                            Sind alles Programme, die es euch erleichtern können alte Commits anzusehen.
+                            <br/>
+                            (es gibt auch <b><i>git log</i></b>)
+                        </p>
+                    </section>
+
+                    <section data-background="rgba(255,255,255,0.87)" data-background-transition="zoom">
+                        <h1><i>Demo</i></h1>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Github</h1>
+                    </section>
+
+                    <section data-background="rgba(255,255,255,0.87)" data-background-transition="zoom">
+                        <h1><i>Demo</i></h1>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h1>Fazit</h1>
+                    </section>
+
+                    <section>
+                        <h2>Begriffe</h2>
+                        <p>
+                            <ul>
+                                <li class="fragment">Workspace</li>
+                                <li class="fragment">Repository</li>
+                                <li class="fragment">Local Repository</li>
+                                <li class="fragment">Remote Repository</li>
+                                <li class="fragment">Branch</li>
+                                <li class="fragment">Commit</li>
+                                <li class="fragment">HEAD</li>
+                            </ul>
+                        </p>
+                    </section>
+
+                    <section>
+						<img src="http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
+                        <br/>
+						<i style="font-size: 15px;">Quelle:
+							<a href="http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png">
+								http://www.patrickzahnd.ch/wp-content/uploads/2014/02/git-transport-v1-1024x723.png
+							</a>
+						</i>
+                    </section>
+
+                    <section>
+                        <h2>Tools</h2>
+                        <p>
+                            <ul>
+                                <li>git gui</li>
+                                <li>Bash Aliases</li>
+                                <li>tig, gitk & gitg</li>
+                                <li><i>uvm...</i></li>
+                            </ul>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Github</h2>
+                        <p>
+                            Ermöglicht es euch noch komfortabler gemeinsam an Projekten zu arbeiten.
+                        </p>
+                    </section>
+                </section>
+				<section>
+					<section>
+                    	<h1>One more thing</h1>
+					</section>
+
+					<section>
+						<h2>GitKraken</h2>
+						<img src="./img/2016_03_03-git/gitkraken.png" style="background: rgba(0,0,0,0); border: none ;width: 80%; height:80%;"></img><br/>
+						<i style="font-size: 15px;">Link: <a href="http://www.gitkraken.com/">http://www.gitkraken.com/</a></i>
+					</section>
+                </section>
+                <section>
+                    <h1>Fragen?</h1>
+                </section>
+                <section>
+                    <img src="./img/2016_03_03-git/fire.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img><br/>
+                    <i style="font-size: 15px;">Quelle: <a href="https://scientificbsides.files.wordpress.com/2015/12/in-case-of-fire-1-git-commit-2-git-push-3-leave-building2.png">https://scientificbsides.files.wordpress.com/2015/12/in-case-of-fire-1-git-commit-2-git-push-3-leave-building2.png</a></i>
+                </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

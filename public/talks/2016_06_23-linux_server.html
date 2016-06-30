@@ -1,0 +1,375 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/material.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<style>
+			.icon {
+				z-index: 100;
+				width: 80px;
+				height: 80px;
+				display: inline-block;
+				background-image: url(../assets/img/home.png);
+				background-size: cover;
+				position: fixed;
+				bottom: 10px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="../index.html">
+			<div class="icon"></div>
+		</a>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Was ist eigenetlich Linux?</h1>
+				    <small>von Niklas Heer</small>
+				    <br>
+				    <small>23.06.2016</small>
+				</section>
+				<section>
+					<h2>Zu meiner Person</h2>
+					<p>Ich verwende Linux...</p>
+					<ul style="list-style-type: none;">
+						<li>...seit 10 Jahren privat</li>
+						<li>...seit 6 Jahren auf meinen Servern</li>
+						<li>...seit 4 Jahren als  mein Hauptbetriebssystem</li>
+						<li>...seit 3 Jahren auch beruflich</li>
+						<li>...seit 1 Jahr ausschließlich (auch auf der Arbeit)</li>
+					</ul>
+					<br/>
+					<p>Wer Fragen zu Linux hat kann gerne auf mich zukommen!</p>
+					<br/>
+					<i style="font-size: 15px;">Disclaimer: Die Präsentation kann persönliche Meinungen enthalten.</i>
+				</section>
+				<section data-background-transition="zoom" data-background="#1976D2">
+					<h1>Gliederung</h1>
+					<p>
+					<h3>
+						<ol>
+							<li class="fragment">Was ist Linux?</li>
+							<li class="fragment">Distributionen</li>
+							<li class="fragment">Fragen</li>
+							<li class="fragment"><i>Demo</i></li>
+						</ol>
+					</h3>
+					</p>
+				</section>
+				<section>
+					<!--Was ist Linux-->
+					<section data-background-transition="zoom" data-background="#1976D2">
+						<h1>Was ist Linux?</h1>
+					</section>
+					<section>
+						<h2>Statistiken</h2>
+						<table>
+							<thead>
+							<tr>
+								<th>Kategorie</th>
+								<th>Linux</th>
+								<th>Unix*</th>
+								<th>Windows</th>
+							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td>PCs/Laptops</td>
+								<td>2%</td>
+								<td>9%</td>
+								<td>89%</td>
+							</tr>
+							<tr>
+								<td>Smartphones</td>
+								<td><span style="color: #212121">65%</span></td>
+								<td>24%</td>
+								<td>2%</td>
+							</tr>
+							<tr>
+								<td><span style="position: relative;left: -25px; top: 5px; float: left;"><span class="fragment current-fragment">> </span>Server (web)</span></td>
+								<td><span style="color: #212121">37%</span></td>
+								<td>30%</td>
+								<td>33%</td>
+							</tr>
+							<tr>
+								<td>  Supercomputer</td>
+								<td><span style="color: #212121">99%</span></td>
+								<td>1%</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Mainframe</td>
+								<td>28%</td>
+								<td>72%</td>
+								<td>-</td>
+							</tr>
+							<tr>
+								<td>Embedded</td>
+								<td><span style="color: #212121">30%</span></td>
+								<td>4%</td>
+								<td>12%</td>
+							</tr>
+							</tbody>
+						</table>
+						<br>
+						<small>* OSX, iOS, FreeBSD, Solaris, AIX...</small>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://en.wikipedia.org/wiki/Usage_share_of_operating_systems#Market_share_by_category">Wikipedia</a></i>
+					</section>
+					<section>
+						<p>
+							Als Linux oder auch GNU/Linux bezeichnet man ein <span class="fragment highlight-black visible">freies</span> <span class="fragment highlight-black visible">unix-ähnliches</span> Betriebssystem, welches auf dem <span class="fragment highlight-black visible">Linux-Kernel</span> und der <span class="fragment highlight-black visible">GNU-Software</span> basiert.
+						</p>
+					</section>
+					<section>
+						<h2>freies Linux</h2>
+						<small>Druch die <i>"GNU General Public License" (GPL)</i></small>
+						<img src="./img/2016_06_23-linux_server/fourfreedoms.png" style="background: rgba(0,0,0,0); border: none ;width: 60%; height:60%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://systemreboot.net/images/640px/fourfreedoms.png">https://systemreboot.net/post/what-is-free-software</a></i>
+					</section>
+					<section>
+						<h2>unix-ähnliches Linux</h2>
+						<p>Unix wurde 1969 in den Bell Labs entwickelt.</p>
+						<h4>Merkmale:</h4>
+						<ul>
+							<li class="fragment">Modularität - Trennung von Kernel und Userland</li>
+							<li class="fragment">Unix-Shell - z.B. bash</li>
+							<li class="fragment">Benutzerverwaltung - root, Dateirechte</li>
+							<li class="fragment">"alles ist eine Datei"</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Der Linux-Kernel</h2>
+						<ul>
+							<li>1991 von Linus Torvalds entwickelt</li>
+							<li>ist ein monolithischer Kernel</li>
+							<li>steht unter der GPL</li>
+						</ul>
+						<br>
+						<br>
+						<img src="./img/2016_06_23-linux_server/linus.png" style="top: 10%; background: rgba(0,0,0,0); border: none ;width: 30%; height:30%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://1.bp.blogspot.com/-_EOfzILtAlc/TvtrX-nCmfI/AAAAAAAAKbY/Fbgn1MCK6hk/ga7.png">http://www.ubuntubuzz.com/2012/04/linus-torvalds-wins-millennium_20.html</a></i>
+					</section>
+					<section>
+						<h2>Aufgaben des Linux-Kernels</h2>
+						<img src="./img/2016_06_23-linux_server/Linux_Kernel_Struktur.svg.png" style="background: rgba(0,0,0,0); border: none ;width: 60%; height:60%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://de.wikipedia.org/wiki/Datei:Linux_Kernel_Struktur.svg">Wikipedia</a></i>
+					</section>
+					<section>
+						<h2>Die GNU-Software</h2>
+						<small>GNU steht für <i>"GNU ist Nicht Unix"</i></small>
+						<br>
+						<ul>
+							<li>Gründung 1984 von Richard Stallman</li>
+							<li>Ziel: Schaffung eines freien Betriebsystem</li>
+							<li>1990 Beginn der Entwicklung des GNU Hurd Kernels</li>
+							<li>Der Linux-Kernel <i>"ersetzte"</i> den Hurd-Kernel</li>
+						</ul>
+						<br>
+						<br>
+						<img src="./img/2016_06_23-linux_server/richard-stallman.png" style="top: 10%; background: rgba(0,0,0,0); border: none ;width: 25%; height:25%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://images.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-4HFh4MLoAzk%2FTzZOehJ25ZI%2FAAAAAAAAAII%2FWtp_PTyPYLo%2Fs1600%2Frichard-stallman.png&f=1">duckduckgo.com</a></i>
+					</section>
+					<section>
+						<h2>GNU-Software im Überblick</h2>
+						<ul>
+							<li>Shell (z.B. bash)</li>
+							<li>Coreutils (z.B. ls, cp, mv...)</li>
+							<li>Compiler (z.B. GCC - für C) </li>
+							<li>Bibliotheken (z.B. glibc - C-Standard-Bibliothek)</li>
+							<li>Umsetzung des POSIX-Standards (API Standard aus UNIX)</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<!--Distributionen-->
+					<section data-background-transition="zoom" data-background="#1976D2">
+						<h1>Distributionen</h1>
+					</section>
+					<section>
+						<h2>Was sind Distributionen?</h2>
+						<br>
+						<p>Mit Distributionen oder auch Distros bezeichnet man Komplettpakete aus aufeinander abgestimmter Linux-Software.</p>
+					</section>
+					<section>
+						<h2>Wie viele Distros gibt es?</h2>
+						<br>
+						<br>
+						<div class="fragment">
+							<h1>~ 800!</h1>
+							<br/><i style="font-size: 15px;">Quelle: <a href="http://distrowatch.com/search.php?status=All">distrowatch.com</a></i>
+						</div>
+					</section>
+					<section>
+						<h2>800 Distros?!</h2>
+						<br>
+						<p>
+							Es gibt aber hauptsächlich 3 Lager.
+							<br>
+							Unterscheidungsmerkmal: <i>Package Manager</i>.
+						</p>
+						<ul>
+							<li>.deb-basierte</li>
+							<li>.rpm-basierte</li>
+							<li><i>andere</i></li>
+						</ul>
+					</section>
+					<section>
+						<h2>.deb-basierte</h2>
+						<br>
+						<p>
+							Dieses Paketformat wurde 1995 von Debian entwickelt.
+							<br>
+							Dazu gehören u.a.:
+						</p>
+						<ul>
+							<li>Debian</li>
+							<li>Ubuntu</li>
+							<li>Linux Mint</li>
+						</ul>
+						<br>
+						<br>
+						<img src="./img/2016_06_23-linux_server/debian.jpg" style="top: 10%; background: rgba(0,0,0,0); border: none ;width: 25%; height:25%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://i1-news.softpedia-static.com/images/fitted/340x180/debian-gnu-linux-7-11-wheezy-is-the-last-in-the-series-debian-8-5-out-now.jpg">softpedia</a></i>
+					</section>
+					<section>
+						<h2>.rpm-basierte</h2>
+						<br>
+						<p>
+							Dieses Paketformat wurde 1997 von Redhat entwickelt.
+							<br>
+							Es ist laut der LSB (Linux Standard Base) der Standard.
+							<br>
+							Dazu gehören u.a.:
+						</p>
+						<ul>
+							<li>Mageia/Mandriva</li>
+							<li>Fedora/RHEL/CentOS</li>
+							<li>openSUSE/SLES/SLED</li>
+						</ul>
+						<br>
+						<br>
+						<img src="./img/2016_06_23-linux_server/1024px-Red_Hat_logo.svg.png" style="top: 10%; background: rgba(0,0,0,0); border: none ;width: 25%; height:25%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://de.wikipedia.org/wiki/Red_Hat_Enterprise_Linux#/media/File:Red_Hat_logo.svg">Wikipedia</a></i>
+					</section>
+					<section>
+						<h2>Die verschiedenen Paketmanager</h2>
+						<pre><code class="hljs" data-trim contenteditable>
+# Debian, Ubuntu & Linux Mint
+apt-get install bash
+
+# Fedora
+dnf install bash
+
+# RHEL/CentOS
+yum intall bash
+
+# openSUSE/SLES/SLED
+zypper in bash
+						</code></pre>
+					</section>
+				</section>
+				<section>
+					<!--Fragen-->
+					<section data-background-transition="zoom" data-background="#1976D2">
+						<h1>Fragen?</h1>
+					</section>
+				</section>
+				<section>
+					<!--Quellen-->
+					<section data-background-transition="zoom" data-background="#1976D2">
+						<h1>Quellen</h1>
+						<ul>
+							<li>https://de.wikipedia.org</li>
+							<li>http://www.linuxfoundation.org/</li>
+							<li>https://www.fsf.org/</li>
+							<li>http://www.softpedia.com/</li>
+							<li>http://distrowatch.com/</li>
+							<li>https://systemreboot.net</li>
+							<li>https://www.suse.com/products/</li>
+							<li>https://www.redhat.com/en</li>
+							<li>über die Jahre angehäuftes Wissen</li>
+						</ul>
+					</section>
+				</section>
+				<section>
+					<!--Demo-->
+					<section data-background-transition="zoom" data-background="#B6B6B6">
+						<h1><i>Demo</i></h1>
+					</section>
+				</section>
+				<section>
+					<section>
+						<h2>One more thing</h2>
+						<p>Es gibt auch Zertifikate für Linux, z.B. vom Linux Professional Institute (LPI)!</p>
+						<ul>
+							<li>Linux Essentials</li>
+							<li>LPIC-1 Linux Server Professional</li>
+							<li>LPIC-2 Linux Network Professional</li>
+							<li>LPIC-3 Linux Enterprise Professional</li>
+						</ul>
+						<br/>
+						<img src="./img/2016_06_23-linux_server/LPIC-1.png" style="top: 10%; background: rgba(0,0,0,0); border: none ;width: 20%; height:20%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://de.wikipedia.org/wiki/Red_Hat_Enterprise_Linux#/media/File:Red_Hat_logo.svg">Wikipedia</a></i>
+					</section>
+					<section>
+						<h1>Vielen Dank!</h1>
+ 					</section>
+					<section>
+						 <img src="./img/2016_06_23-linux_server/stallman.jpg" style="background: rgba(0,0,0,0); border: none ;width: 70%; height:70%;"></img>
+					</section>
+					<section data-background-transition="zoom" data-background="#1976D2">
+						<h1>Bonus</h1>
+						<h3>Docker vs. <i>"Virtual Machines"</i> (VMs)</h3>
+					</section>
+					<section>
+						<h2>Docker</h2>
+						<img src="./img/2016_06_23-linux_server/Docker-linux-interfaces.svg.png" style="background: rgba(0,0,0,0); border: none; width: 60%; height:60%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://de.wikipedia.org/wiki/Docker_(Software)#/media/File:Docker-linux-interfaces.svg">Wikipedia</a></i>
+					</section>
+					<section>
+						<h2>Virtual Machine</h2>
+						<img src="./img/2016_06_23-linux_server/Hypervisors_new_V2.jpg" style="background: rgba(0,0,0,0); border: none; width: 55%; height:55%;box-shadow: none"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="https://www.viux.com/Portals/0/images/hosting/cloud_servers/Hypervisors_new_V2.jpg">https://www.viux.com</a></i>
+					</section>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
