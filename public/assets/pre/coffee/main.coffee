@@ -1,4 +1,4 @@
-##### Footer (Easter Egg)
+# Footer (Easter Egg)
 $("footer .love").hover ->
   $FooterName = $("footer .name")
   if $FooterName.hasClass('active')
