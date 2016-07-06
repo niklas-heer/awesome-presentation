@@ -1,5 +1,8 @@
 # awesome-presentation
 
+## Why this project
+It is always better to share things and this is a way to share my talks with the world and hopefully someone can get use out of it. Enjoy! :)
+
 ## Technology used
 
 * UI Framework: https://getmdl.io/
