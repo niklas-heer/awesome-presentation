@@ -1,5 +1,14 @@
 # awesome-presentation
 
+## Technology used
+
+* UI Framework: https://getmdl.io/
+* Jquery: http://jquery.com/
+* Icons: http://fontawesome.io/
+* Presentations: http://lab.hakim.se/reveal-js/#/
+* JS preprocessor language: http://coffeescript.org/
+* CSS preprocessor language: http://stylus-lang.com/
+
 ## Licences
 All presentation are released under [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 <br>
