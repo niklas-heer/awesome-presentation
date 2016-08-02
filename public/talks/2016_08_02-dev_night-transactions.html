@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/nih.css">
+
+		<link rel="stylesheet" href="plugin/title-footer/title-footer.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+
+
+	<div class="reveal">
+
+		<div style="top: 0px; margin-left: 0px; width: 100%; background: rgba(0,0,0,0.1); text-align: center; height: 2vh; z-index: 5; font-size: 2vh; text-align: center; letter-spacing: 0em; padding-top: 0.5vh; padding-bottom: 0.5vh; opacity: 1; transition: opacity 800ms ease-in-out; position: fixed;">
+		<span style="color:#fff; "><a href="http://www.twitter.com/niklas_heer" style="color:#fff; text-decoration: none">@niklas_heer</a> | <a href="https://twitter.com/search?q=%23devnightrises&amp;src=hash" style="color:#fff; text-decoration: none">#devnightrises</a></span>
+	</div>
+
+			<div class="slides">
+				<section data-state="no-toc-progress">
+					<img src="./img/2016_08_02-dev_night-transactions/dev_night-logo.png">
+					<h2>Transaction Patterns</h2>
+				</section>
+				<section>
+					Slide 2
+				</section>
+			</div>
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } },
+					{ src: 'plugin/menu/menu.js' }
+				],
+
+				menu: {
+					themes: [
+						{ name: 'nih', theme: 'css/theme/nih.css' },
+					],
+					custom: [
+						{ title: 'Über', icon: '<i class="fa fa-info">', content: '' +
+						'<h2>Links</h2>' +
+						'<ul class="slide-menu-items">' +
+							'<li class="slide-menu-item"><a href="https://www.tradebyte.com/dev-night/">/dev/night Seite</a></li>' +
+							'<li class="slide-menu-item"><a href="https://twitter.com/search?q=%23devnightrises&src=hash">/dev/night Twitter Hashtag</a></li>' +
+							'<li class="slide-menu-item"><a href="https://www.tradebyte.com">Tradebyte Homepage</a></li>' +
+							'<li class="slide-menu-item"><a href="http://nheer.io">Niklas Homepage</a></li>' +
+							'<li class="slide-menu-item"><a href="http://talks.nheer.io">Niklas Präsentationen</a></li>' +
+						'</ul>'}
+					]
+				}
+			});
+		</script>
+	</body>
+</html>
