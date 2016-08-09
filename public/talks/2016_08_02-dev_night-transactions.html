@@ -209,7 +209,7 @@ COMMIT;
 					</section>
 
 					<section>
-						<img src="./img/2016_08_02-dev_night-transactions/comp.jpg" style="background: rgba(0,0,0,0); border: none; width: 59%;"></img>
+						<img src="./img/2016_08_02-dev_night-transactions/comp.jpg" style="background: rgba(0,0,0,0); border: none; width: 58%;"></img>
 						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
 					</section>
 				</section>
@@ -217,20 +217,47 @@ COMMIT;
 				<!-- 2 Phase -->
 				<section>
 					<section>
-						<h1>Composite Transaction</h1>
+						<h1>Two Phase Commit</h1>
 					</section>
 
 					<section>
 						<p>
-							Einfache Transactions sind leichter korrekt zu implementieren.
+							Wenn eine Transaction aus simpleren Transactions besteht, sollten entweder alle erfolgreich durchlaufen oder alle abgebrochen werden.
 							<br />
-							Daher kann man komplexere Transactions aus einfacheren ACID Transactions entwickeln.
+							Bei einem Abbruch sollten alle Objekte in dem Status vor der Transactions verbleiben.
 						</p>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/2phase-1.jpg" style="background: rgba(0,0,0,0); border: none; width: 50%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/2phase-2.jpg" style="background: rgba(0,0,0,0); border: none; width: 70%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
 					</section>
 				</section>
 
 				<!-- Übung -->
 				<section>
+					<section>
+						<h1>Challenge</h1>
+					</section>
+
+					<section>
+						<h2>Mategetränke-Automat</h2>
+
+						<p>Ihr sollt mit dem "Two Phase Commit"-Pattern einen Service erstellen, der aus folgenden Komponenten besteht.</p>
+
+						<ul>
+							<li>Getränkewahl</li>
+							<li>Geldannahme</li>
+							<li>Getränkeausgabe</li>
+						</ul>
+
+						<p>Bildet Teams aus 2-3 Leuten!</p>
+					</section>
 
 				</section>
 
