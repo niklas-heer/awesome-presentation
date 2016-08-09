@@ -59,6 +59,32 @@
 					<section>
 						<h1>Transaction Patterns</h1>
 					</section>
+
+					<section>
+						<h2>Warum ist das nützlich?</h2>
+					</section>
+
+					<section>
+						<h2>Beispiel: Geldautomat</h2>
+
+						<br />
+
+						<p class="fragment">Was muss der Automat können?</p>
+
+						<ul class="fragment">
+							<li>Zusammenspiel von mehreren Diensten</li>
+							<li>Aktionen müssen korrekt ausgeführt werden</li>
+							<li>Ausfallsicherheit</li>
+						</ul>
+
+						<br />
+
+						<h3 class="fragment">Die Lösung: <b>ACID!</b></h3>
+					</section>
+				</section>
+
+				<!-- MySQL -->
+				<section>
 					<section>
 						<img src="./img/2016_08_02-dev_night-transactions/ACID.jpg" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
 						<br/><i style="font-size: 15px;">Quelle: <a href="http://www.bsimard.com/presentation-neo4j">http://www.bsimard.com/presentation-neo4j</a></i>
@@ -72,14 +98,90 @@
 					<!--https://dev.mysql.com/doc/refman/5.5/en/mysql-acid.html-->
 
 					<section>
-						<pre><code data-trim contenteditable>
+						<h1 style="text-transform: none"><code>InnoDB</code></h1>
+					</section>
+
+					<section>
+						<h2>Atomicity</h2>
+
+						<br />
+
+						<ul>
+							<li>Autocommit Einstellung</li>
+							<li><code>COMMIT</code> Statement</li>
+							<li><code>ROLLBACK</code> Statement</li>
+						</ul>
+
+						<br />
+						<br />
+
+						<pre class="fragment"><code class="hljs" data-trim contenteditable>
 START TRANSACTION;
 UPDATE customers SET balance = 500 WHERE customer = 'Dennis';
 COMMIT;
 						</code></pre>
+					</section>
 
+					<section>
+						<h2>Consistency</h2>
 
+						<br />
 
+						<ul>
+							<li><code>InnoDB</code> <b><i>doublewrite buffer</i></b></li>
+							<li><code>InnoDB</code> <b><i>crash recovery</i></b></li>
+						</ul>
+
+						<br />
+						<br />
+
+						<!--<q class="fragment"><small>-->
+							<!--Before writing pages to the data files, InnoDB first writes-->
+							<!--them to a contiguous area called the doublewrite buffer.-->
+							<!--Only after the write and the flush to the doublewrite buffer-->
+							<!--have completed, does InnoDB write the pages to-->
+							<!--their proper positions in the data file.-->
+						<!--</small></q>-->
+					</section>
+
+					<section>
+						<h2>Isolation</h2>
+
+						<br />
+
+						<ul>
+							<li>Autocommit Einstellung</li>
+							<li><code>SET ISOLATION LEVEL</code> Statement</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Durability</h2>
+
+						<br />
+
+						<p>Verschiedene Einstellung zur Anpassung an die Hardware. z.B.:</p>
+
+						<ul>
+							<li>Autocommit Einstellung</li>
+							<li>Konfiguration zu <code>innodb_file_per_table</code></li>
+							<li>Konfiguration zu <code>sync_binlog</code></li>
+						</ul>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/bsp1.jpg" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/bsp2.jpg" style="background: rgba(0,0,0,0); border: none; width: 70%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/bsp3.jpg" style="background: rgba(0,0,0,0); border: none; width: 70%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
 					</section>
 
 				</section>
