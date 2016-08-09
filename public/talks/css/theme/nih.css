@@ -32,6 +32,8 @@ body {
 .reveal .slides > section > section {
     line-height: 1.3;
     font-weight: inherit;
+    padding: 15px;
+    width: 95%;
 }
 
 /*********************************************

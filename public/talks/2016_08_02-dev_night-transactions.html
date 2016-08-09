@@ -83,19 +83,34 @@
 					</section>
 				</section>
 
-				<!-- MySQL -->
 				<section>
+					<h2>Was wir uns ansehen werden</h2>
+
+					<img src="./img/2016_08_02-dev_night-transactions/map.jpg" style="background: rgba(0,0,0,0); border: none; width: 70%;"></img>
+					<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
+				</section>
+
+				<!-- ACID -->
+				<section>
+					<!--https://dev.mysql.com/doc/refman/5.5/en/mysql-acid.html-->
+
 					<section>
 						<img src="./img/2016_08_02-dev_night-transactions/ACID.jpg" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
 						<br/><i style="font-size: 15px;">Quelle: <a href="http://www.bsimard.com/presentation-neo4j">http://www.bsimard.com/presentation-neo4j</a></i>
 					</section>
+
+					<section>
+						<p>Das <code><b>ACID Transaction pattern</b></code> beschreibt wie man eine Transaction designen kann die niemals in einen inkonsistenten oder unerwarteten Zustand läuft.</p>
+					</section>
+
+					<section>
+						<h1>Beispiel?</h1>
+					</section>
+
 					<section>
 						<img src="./img/2016_08_02-dev_night-transactions/MySQL.png" style="background: rgba(0,0,0,0); border: none ;width: 90%; height:90%;"></img>
 						<br/><i style="font-size: 15px;">Quelle: <a href="https://de.wikipedia.org/wiki/Datei:Logo_MySQL.svg">Wikipedia</a></i>
 					</section>
-
-
-					<!--https://dev.mysql.com/doc/refman/5.5/en/mysql-acid.html-->
 
 					<section>
 						<h1 style="text-transform: none"><code>InnoDB</code></h1>
@@ -135,13 +150,6 @@ COMMIT;
 						<br />
 						<br />
 
-						<!--<q class="fragment"><small>-->
-							<!--Before writing pages to the data files, InnoDB first writes-->
-							<!--them to a contiguous area called the doublewrite buffer.-->
-							<!--Only after the write and the flush to the doublewrite buffer-->
-							<!--have completed, does InnoDB write the pages to-->
-							<!--their proper positions in the data file.-->
-						<!--</small></q>-->
 					</section>
 
 					<section>
@@ -186,6 +194,45 @@ COMMIT;
 
 				</section>
 
+				<!-- Composite Transaction -->
+				<section>
+					<section>
+						<h1>Composite Transaction</h1>
+					</section>
+
+					<section>
+						<p>
+							Einfache Transactions sind leichter korrekt zu implementieren.
+							<br />
+							Daher kann man komplexere Transactions aus einfacheren ACID Transactions entwickeln.
+						</p>
+					</section>
+
+					<section>
+						<img src="./img/2016_08_02-dev_night-transactions/comp.jpg" style="background: rgba(0,0,0,0); border: none; width: 59%;"></img>
+						<br/><i style="font-size: 15px;">Quelle: <a href="http://hillside.net/plop/plop99/proceedings/grand/plop_99_transaction_patterns.pdf">Hillside PDF</a></i>
+					</section>
+				</section>
+
+				<!-- 2 Phase -->
+				<section>
+					<section>
+						<h1>Composite Transaction</h1>
+					</section>
+
+					<section>
+						<p>
+							Einfache Transactions sind leichter korrekt zu implementieren.
+							<br />
+							Daher kann man komplexere Transactions aus einfacheren ACID Transactions entwickeln.
+						</p>
+					</section>
+				</section>
+
+				<!-- Übung -->
+				<section>
+
+				</section>
 
 				<section>
 					<section>
@@ -212,7 +259,7 @@ COMMIT;
 					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize(); } },
+					{ src: 'plugin/title-footer/title-footer.js', async: true, callback: function() { title_footer.initialize('/dev/night - Transaction Patterns'); } },
 					{ src: 'plugin/menu/menu.js' }
 				],
 
