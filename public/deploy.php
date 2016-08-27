@@ -6,6 +6,7 @@
  *
  *		https://gist.github.com/1809044
  */
+
 // The commands
 // Maybe for later use:
 //
@@ -18,17 +19,23 @@ $commands = array(
     'git pull origin master',
     'git status',
 );
+
 // Run the commands for output
 $output = '';
+
 // Change to working directory
 chdir('/var/www/sites/talks');
+
 foreach($commands AS $command){
     // Run it
     $tmp = shell_exec($command);
+
     // Output
     $output .= "<span style=\"color: #6BE234;\">\$</span> <span style=\"color: #729FCF;\">{$command}\n</span>";
     $output .= htmlentities(trim($tmp)) . "\n";
 }
+
+
 // Make it pretty for manual user access (and why not?)
 ?>
 <!DOCTYPE HTML>
